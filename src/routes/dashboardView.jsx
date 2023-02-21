@@ -1,29 +1,107 @@
 import Authprovider from "../components/authprovider";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { useState } from "react";
+import DashboardWrapper from "../components/dashboardWrapper";
+import { v4 as uuidv4 } from "uuid";
+import { getLinks, insertNewLink } from "../firebase/firebase";
+import { async } from "@firebase/util";
+import Enlace from "../components/enlace";
 
 
 const DashboardView = () => {
     const navigate = useNavigate()
+    const [currentUser, setCurrentUser] = useState({})
+    const [state, setState] = useState(0)
+    const [title, setTitle] = useState('')
+    const [url, setUrl] = useState('')
+    const [links, setLinks] = useState([])
+    
 
-    const handleUserLogin = () => {
-        navigate('/dashboard')
+    async function handleUserLogin (user) {
+        setCurrentUser(user)
+        setState(2)
+        const resLinks = await getLinks(user.uid)
+        setLinks([...resLinks])
     }
     const handleUserNotRegister = (user) => {
+        navigate('/login')
     }
     const handleUserNotLogin = () => {
         navigate('/login')
     }
 
-    return ( 
-        <Authprovider 
-            onUserLogin={handleUserLogin} 
-            onUserNotRegister={handleUserNotRegister}
-            onUserNotLogin={handleUserNotLogin}
-        >  
-        <h1>holas</h1>
-        </Authprovider>
-     );
+
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        addLink()
+    }
+    const addLink = () => {
+        if(title !== "" && url !== ""){
+            const newLink = {
+                id: uuidv4(),
+                title: title,
+                url: url,
+                uid: currentUser.uid
+            }
+            const res = insertNewLink(newLink)
+            newLink.docId = res.id
+            setTitle('')
+            setUrl('')
+            setLinks([...links, newLink])
+        }
+    }
+
+    const handleOnChange = (e) => {
+        const value = e.target.value
+        if (e.target.name == 'title'){
+            setTitle(value)
+        } 
+        if (e.target.name == 'url'){
+            setUrl(value)
+        }
+    }
+
+    const handleDeleteLink = () => {
+        
+    }
+    const handleUpdateLink = () => {
+        
+    }
+    if(state == 0){
+        return ( 
+            <Authprovider 
+                onUserLogin={handleUserLogin} 
+                onUserNotRegister={handleUserNotRegister}
+                onUserNotLogin={handleUserNotLogin}
+            >  
+            <h1>Loading...</h1>
+            </Authprovider>
+         );
+    }
+
+    return(
+        <DashboardWrapper>
+            <div>
+                <h2>Dashboard</h2>
+
+                <form action="" onSubmit={handleOnSubmit}>
+                    <label htmlFor="title">Titulo</label>
+                    <input type="text" name="title" onChange={handleOnChange}/>
+
+                    <label htmlFor="url">URL</label>
+                    <input type="text" name="url" onChange={handleOnChange}/>
+
+                    <input type="submit" value="Crar nuevo link" />
+                </form>
+                <div>
+                    {links.map(link=>(
+                        <Enlace key={link.id} title={link.title} url={link.url} onDelete={handleDeleteLink} onUpdate={handleUpdateLink} />
+                    ))}
+                </div>
+            </div>
+        </DashboardWrapper>
+    )
 }
  
 export default DashboardView;
