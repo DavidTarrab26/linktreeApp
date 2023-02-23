@@ -3,8 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { useState } from "react";
 import DashboardWrapper from "../components/dashboardWrapper";
 import { v4 as uuidv4 } from "uuid";
-import { getLinks, insertNewLink } from "../firebase/firebase";
-import { async } from "@firebase/util";
+import { deleteLink, getLinks, insertNewLink, updateLink } from "../firebase/firebase";
 import Enlace from "../components/enlace";
 
 
@@ -62,11 +61,16 @@ const DashboardView = () => {
         }
     }
 
-    const handleDeleteLink = () => {
-        
+    async function handleDeleteLink(docId) {
+        await deleteLink(docId)
+        const tmp = links.filter(link => link.docId !== docId)
+        setLinks([...tmp])
     }
-    const handleUpdateLink = () => {
-        
+    async function handleUpdateLink (docId, title, url){
+        const link = links.find(link => link.docId == docId)
+        link.title = title
+        link.url = url
+        await updateLink(docId, link)
     }
     if(state == 0){
         return ( 
@@ -96,7 +100,7 @@ const DashboardView = () => {
                 </form>
                 <div>
                     {links.map(link=>(
-                        <Enlace key={link.id} title={link.title} url={link.url} onDelete={handleDeleteLink} onUpdate={handleUpdateLink} />
+                        <Enlace key={link.docId} docId={link.docId} title={link.title} url={link.url} onDelete={handleDeleteLink} onUpdate={handleUpdateLink} />
                     ))}
                 </div>
             </div>
