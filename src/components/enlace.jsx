@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-export default function Enlace({docId, title, url, onDelete, onUpdate}){
-
+const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
     const [currentTitle, setCurrentTitle] = useState(title)
     const [currentUrl, setCurrentUrl] = useState(url)
     const [editTitle, setEditTitle] = useState(false)
@@ -75,3 +74,5 @@ export default function Enlace({docId, title, url, onDelete, onUpdate}){
         </div>
     )
 }
+ 
+export default Enlace;

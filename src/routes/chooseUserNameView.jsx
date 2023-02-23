@@ -23,7 +23,7 @@ const ChooseUserNameView = () => {
     const handleInputUserName = (e) => {
         setUsername(e.target.value)
     }
-    async function handleContinue() {
+    const handleContinue = async () => {
         if(username !== "") {
             const exists = await existUsername(username)
             if (exists){

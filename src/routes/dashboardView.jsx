@@ -16,7 +16,7 @@ const DashboardView = () => {
     const [links, setLinks] = useState([])
     
 
-    async function handleUserLogin (user) {
+    const handleUserLogin = async (user) => {
         setCurrentUser(user)
         setState(2)
         const resLinks = await getLinks(user.uid)
@@ -61,12 +61,12 @@ const DashboardView = () => {
         }
     }
 
-    async function handleDeleteLink(docId) {
+    const handleDeleteLink = async (docId) => {
         await deleteLink(docId)
         const tmp = links.filter(link => link.docId !== docId)
         setLinks([...tmp])
     }
-    async function handleUpdateLink (docId, title, url){
+    const handleUpdateLink = async (docId, title, url) => {
         const link = links.find(link => link.docId == docId)
         link.title = title
         link.url = url

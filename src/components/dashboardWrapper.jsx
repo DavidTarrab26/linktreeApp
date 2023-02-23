@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 
-export default function DashboardWrapper ({children}){
+const DashboardWrapper = ({children}) => {
     return(
         <div>
             <nav>
@@ -15,3 +15,5 @@ export default function DashboardWrapper ({children}){
         </div>
     )
 }
+ 
+export default DashboardWrapper;

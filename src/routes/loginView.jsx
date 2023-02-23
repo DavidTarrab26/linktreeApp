@@ -17,12 +17,12 @@ const LoginView = () => {
     */
     const [state, setState] = useState(0)
 
-    async function onHandleClick() {
+    const onHandleClick = async() => {
         const googleProvider = new GoogleAuthProvider()
         await signInWithGoogle(googleProvider)
     }
 
-    async function signInWithGoogle (googleProvider) {
+    const signInWithGoogle = async (googleProvider) => {
         try {
             const res = await signInWithPopup(auth, googleProvider)
             console.log(res)
