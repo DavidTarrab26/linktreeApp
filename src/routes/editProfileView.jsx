@@ -66,6 +66,7 @@ const EditProfileView = () => {
             <DashboardWrapper>
                 <div>
                     <h3>Edit Profile</h3>
+                    <h1>{currentUser.username}</h1>
                     <div>
                         <div>
                             <img src={profileUrl} alt="" width={100} />

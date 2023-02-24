@@ -14,6 +14,7 @@ const LoginView = () => {
     4: no hay nadie logueado
     5: ya existe el username
     6: nuevo username, click para continuar
+    7: username no existe
     */
     const [state, setState] = useState(0)
 
@@ -25,9 +26,8 @@ const LoginView = () => {
     const signInWithGoogle = async (googleProvider) => {
         try {
             const res = await signInWithPopup(auth, googleProvider)
-            console.log(res)
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 
