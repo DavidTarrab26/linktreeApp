@@ -10,6 +10,8 @@ import EditProfileView from './routes/editProfileView';
 import SignOutView from './routes/signOutView';
 import PublicProfileView from './routes/publicProfileView';
 import ChooseUserNameView from './routes/chooseUserNameView';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

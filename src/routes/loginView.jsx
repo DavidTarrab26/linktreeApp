@@ -1,8 +1,9 @@
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { auth, userExists } from "../firebase/firebase";
+import { auth } from "../firebase/firebase";
 import {useNavigate} from "react-router-dom";
 import Authprovider from "../components/authprovider";
+import "./loginView.css"
 const LoginView = () => {
 
     const navigate = useNavigate()
@@ -26,6 +27,7 @@ const LoginView = () => {
     const signInWithGoogle = async (googleProvider) => {
         try {
             const res = await signInWithPopup(auth, googleProvider)
+            return res
         } catch (error) {
             console.error(error)
         }
@@ -43,8 +45,14 @@ const LoginView = () => {
 
     if (state === 4) {
         return(
-            <div>
-                <button onClick={onHandleClick}>Login with Google</button>
+            <div className="container">
+                <div className="cont-btn">
+                    <div className="shadow p-3 mb-5 bg-body rounded p-5" >
+                        <h1>Link Tree</h1>
+                        <p>Bienvenido a Link Tree. La pagina donde podes guardar y compartir toda tu informacion de las redes</p>
+                        <button onClick={onHandleClick} className="btn btn-primary login-btn">Login with Google</button>
+                    </div>
+                </div>
             </div>
         )
     }

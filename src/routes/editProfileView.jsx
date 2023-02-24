@@ -2,7 +2,6 @@ import DashboardWrapper from "../components/dashboardWrapper";
 import Authprovider from "../components/authprovider";
 import {useNavigate} from "react-router-dom";
 import { useRef, useState } from "react";
-import { async } from "@firebase/util";
 import { getProfileFotoUrl, setUserProfileFoto, updateUser } from "../firebase/firebase";
 
 const EditProfileView = () => {

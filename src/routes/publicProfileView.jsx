@@ -30,7 +30,7 @@ const PublicProfileView = () => {
         getProfile()
     },[params])
 
-    if(state == 7){
+    if(state === 7){
         return(
             <div>
                 <h1>Ese usuario no existe</h1>

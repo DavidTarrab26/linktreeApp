@@ -1,11 +1,10 @@
 import Authprovider from "../components/authprovider";
 import {useNavigate} from "react-router-dom";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { logout } from "../firebase/firebase";
 
 const SignOutView = () => {
     const navigate = useNavigate()
-    const [currentUser, setCurrentUser] = useState({})
     const [state, setState] = useState(0)
 
     const handleUserLogin = () => {
