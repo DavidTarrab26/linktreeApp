@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import "./enlace.css"
 
 const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
     const [currentTitle, setCurrentTitle] = useState(title)
@@ -43,16 +44,16 @@ const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
     }
 
     return(
-        <div key={docId}>
+        <div key={docId} className="shadow p-3 mb-5 bg-body-tertiary rounded d-flex justify-content-between">
             <div>
                 {editTitle ? 
                 <>
                     <input type="text" value={currentTitle} ref={titleRef} onChange={handleChangeTitle} onBlur={handleBlurTitle} />
                 </>
                 :
-                <div>
-                    <button onClick={handleEditTitle}>Editar</button>
-                    <h4>{currentTitle}</h4>
+                <div className="d-flex">
+                    <button className="btn btn-primary" onClick={handleEditTitle}>Editar</button>
+                    <h4 className="title">{currentTitle}</h4>
                 </div>   
                 }
                 <div>
@@ -61,15 +62,15 @@ const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
                     <input type="text" value={currentUrl} ref={urlRef} onChange={handleChangeUrl} onBlur={handleBlurUrl} />
                 </>
                 :
-                <div>
-                    <button onClick={handleEditUrl}>Editar</button>
-                    <h4>{currentUrl}</h4>
+                <div className="d-flex mt-3">
+                    <button className="btn btn-primary" onClick={handleEditUrl}>Editar</button>
+                    <h4 className="url">{currentUrl}</h4>
                 </div>   
                 }
                 </div>
             </div>
-            <div>
-                <button onClick={handleDelete}>Eliminar</button>
+            <div className="d-flex align-items-center m-3">
+                <button className="btn btn-danger" onClick={handleDelete}>Eliminar</button>
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import DashboardWrapper from "../components/dashboardWrapper";
 import { v4 as uuidv4 } from "uuid";
 import { deleteLink, getLinks, insertNewLink, updateLink } from "../firebase/firebase";
 import Enlace from "../components/enlace";
+import "./dashboardView.css"
 
 
 const DashboardView = () => {
@@ -86,17 +87,17 @@ const DashboardView = () => {
 
     return(
         <DashboardWrapper>
-            <div>
-                <h2>Dashboard</h2>
+            <div className="cont-dash">
+                <h2 className="titulo" >Panel De Control</h2>
 
-                <form action="" onSubmit={handleOnSubmit}>
+                <form className="" action="" onSubmit={handleOnSubmit}>
                     <label htmlFor="title">Titulo</label>
                     <input type="text" name="title" onChange={handleOnChange}/>
 
                     <label htmlFor="url">URL</label>
                     <input type="text" name="url" onChange={handleOnChange}/>
 
-                    <input type="submit" value="Crar nuevo link" />
+                    <input className="btn btn-primary" type="submit" value="Crear nuevo link" />
                 </form>
                 <div>
                     {links.map(link=>(
