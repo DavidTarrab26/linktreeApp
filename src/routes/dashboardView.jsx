@@ -1,7 +1,6 @@
 import Authprovider from "../components/authprovider";
 import {useNavigate} from "react-router-dom";
 import { useState } from "react";
-import DashboardWrapper from "../components/dashboardWrapper";
 import { v4 as uuidv4 } from "uuid";
 import { deleteLink, getLinks, insertNewLink, updateLink } from "../firebase/firebase";
 import Enlace from "../components/enlace";
@@ -86,26 +85,24 @@ const DashboardView = () => {
     }
 
     return(
-        <DashboardWrapper>
-            <div className="cont-dash">
-                <h2 className="titulo" >Panel De Control</h2>
+        <div className="cont-dash">
+            <h2 className="titulo" >Panel De Control</h2>
+            <div className="cont-form">
+                <form className="form" action="" onSubmit={handleOnSubmit}>
 
-                <form className="" action="" onSubmit={handleOnSubmit}>
-                    <label htmlFor="title">Titulo</label>
-                    <input type="text" name="title" onChange={handleOnChange}/>
+                    <input type="text" placeholder="Titulo" className="form-control input" name="title" onChange={handleOnChange}/>
 
-                    <label htmlFor="url">URL</label>
-                    <input type="text" name="url" onChange={handleOnChange}/>
+                    <input type="text" placeholder="URL" className="form-control input" name="url" onChange={handleOnChange}/>
 
                     <input className="btn btn-primary" type="submit" value="Crear nuevo link" />
                 </form>
-                <div>
-                    {links.map(link=>(
-                        <Enlace key={link.docId} docId={link.docId} title={link.title} url={link.url} onDelete={handleDeleteLink} onUpdate={handleUpdateLink} />
-                    ))}
-                </div>
             </div>
-        </DashboardWrapper>
+            <div>
+                {links.map(link=>(
+                    <Enlace key={link.docId} docId={link.docId} title={link.title} url={link.url} onDelete={handleDeleteLink} onUpdate={handleUpdateLink} />
+                ))}
+            </div>
+        </div>
     )
 }
  

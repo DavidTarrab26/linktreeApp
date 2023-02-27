@@ -1,0 +1,19 @@
+.nav{
+    height: 9vh;
+    width: 98%;
+    border-radius: 70px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.logo{
+    margin-left: 50px;
+}
+.cont-menu{
+    margin-left: 10%;
+    width: 40%;
+}
+.txt-nav{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+}

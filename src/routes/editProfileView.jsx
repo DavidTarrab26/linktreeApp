@@ -1,4 +1,3 @@
-import DashboardWrapper from "../components/dashboardWrapper";
 import Authprovider from "../components/authprovider";
 import {useNavigate} from "react-router-dom";
 import { useRef, useState } from "react";
@@ -62,21 +61,19 @@ const EditProfileView = () => {
         )
     }
     return (   
-            <DashboardWrapper>
+            <div>
+                <h3>Edit Profile</h3>
+                <h1>{currentUser.username}</h1>
                 <div>
-                    <h3>Edit Profile</h3>
-                    <h1>{currentUser.username}</h1>
                     <div>
-                        <div>
-                            <img src={profileUrl} alt="" width={100} />
-                        </div>
-                        <div>
-                            <button onClick={handleOpenFilePicker}>Selecciona una nueva foto de perfil</button>
-                            <input ref={fileRef} type="file" style={{display:"none"}} onChange={handleChangeFile} />
-                        </div>
+                        <img src={profileUrl} alt="" width={100} />
+                    </div>
+                    <div>
+                        <button onClick={handleOpenFilePicker}>Selecciona una nueva foto de perfil</button>
+                        <input ref={fileRef} type="file" style={{display:"none"}} onChange={handleChangeFile} />
                     </div>
                 </div>
-            </DashboardWrapper>
+            </div>
      );
 }
  

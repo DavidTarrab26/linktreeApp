@@ -52,7 +52,7 @@ const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
                 </>
                 :
                 <div className="d-flex">
-                    <button className="btn btn-primary" onClick={handleEditTitle}>Editar</button>
+                    <button className="btn btn-secondary" onClick={handleEditTitle}><i className="bi bi-pencil"></i></button>
                     <h4 className="title">{currentTitle}</h4>
                 </div>   
                 }
@@ -63,14 +63,14 @@ const Enlace = ({docId, title, url, onDelete, onUpdate}) => {
                 </>
                 :
                 <div className="d-flex mt-3">
-                    <button className="btn btn-primary" onClick={handleEditUrl}>Editar</button>
+                    <button className="btn btn-secondary" onClick={handleEditUrl}><i className="bi bi-pencil"></i></button>
                     <h4 className="url">{currentUrl}</h4>
                 </div>   
                 }
                 </div>
             </div>
             <div className="d-flex align-items-center m-3">
-                <button className="btn btn-danger" onClick={handleDelete}>Eliminar</button>
+                <button className="btn btn-outline-danger" onClick={handleDelete}><i className="bi bi-trash-fill iconBasura"></i></button>
             </div>
         </div>
     )
