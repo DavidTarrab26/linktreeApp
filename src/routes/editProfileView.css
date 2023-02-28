@@ -1,0 +1,27 @@
+.cont-profile{
+    display: flex;
+    justify-content: center;
+}
+.title-profile{
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+.fto-profile{
+    width: 250px;
+    border-radius: 100%;
+    margin-bottom: 10%;
+}
+.cont-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+.txt-name{
+    text-transform: capitalize;
+}

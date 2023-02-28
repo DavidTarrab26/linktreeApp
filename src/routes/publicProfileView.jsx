@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LinkPublic from "../components/linkPublic";
 import {existUsername, getProfileFotoUrl, getUserPublicProfileInfo} from "../firebase/firebase"
+import "./publicProfileView.css"
 
 const PublicProfileView = () => {
     const params = useParams()
@@ -38,11 +39,13 @@ const PublicProfileView = () => {
         )
     }
     return ( 
-        <div>
-            <h3>Public profile</h3>
-            <img src={url} alt="" />
-            <h2>{profile?.profileInfo.username}</h2>
-            <h3>{profile?.profileInfo.displayName}</h3>
+        <div className="container cont-public">
+            <h3 className="title-public">Public profile</h3>
+            <img className="fto-public" src={url} alt="" />
+            <div className="cont-txt-public">
+                <h2 className="txt-public">{profile?.profileInfo.username}</h2>
+                <h3>{profile?.profileInfo.displayName}</h3>
+            </div>
             <div>
                 {profile?.linksInfo.map(link => (
                     <LinkPublic key={link.docId} url={link.url} title={link.title} />

@@ -1,0 +1,20 @@
+.fto-public{
+    width: 250px;
+    border-radius: 100%;
+}
+.cont-public{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-public{
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin: 3% 0px;
+}
+.txt-public{
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+}
