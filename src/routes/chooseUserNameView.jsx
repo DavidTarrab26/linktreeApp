@@ -46,7 +46,7 @@ const ChooseUserNameView = () => {
                     <h2>Bienvenido {currentUser.displayName}</h2>
                     <p>Para terminar el registro elige un nombre de usuario!</p>
                     <div className="mt-3">
-                        <input type="text" onInput={handleInputUserName} />
+                        <input type="text" className="form-control" onInput={handleInputUserName} />
                     </div>
                     {state == 5 ? <p className="text-danger">El nombre del usuario ya existe!</p>: ""}
                     <div>

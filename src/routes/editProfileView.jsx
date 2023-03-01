@@ -10,6 +10,7 @@ const EditProfileView = () => {
     const [state, setState] = useState(0)
     const [profileUrl, setProfileUrl] = useState(null)
     const fileRef = useRef(null)
+    console.log(profileUrl)
 
     const handleUserLogin = async (user) => {
         setCurrentUser(user)
@@ -66,9 +67,16 @@ const EditProfileView = () => {
                 <h3 className="title-profile">Edit Profile Info</h3>
                 <div className="cont-profile">
                     <div>
+                        {profileUrl === undefined ? 
+                            <div>
+                                <p>"poner una foto de perfil sin foto"</p>
+                                <h2>elija una foto de perfil!</h2>
+                            </div>
+                        :
                         <div>
                             <img src={profileUrl} alt="" className="fto-profile" />
                         </div>
+                        }
                         <div>
                             <button className="btn btn-dark" onClick={handleOpenFilePicker}>Selecciona una nueva foto de perfil</button>
                             <input ref={fileRef} type="file" style={{display:"none"}} onChange={handleChangeFile} />
