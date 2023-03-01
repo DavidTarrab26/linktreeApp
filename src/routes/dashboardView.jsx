@@ -93,7 +93,8 @@ const DashboardView = () => {
                     <input type="text" placeholder="Titulo" className="form-control input" name="title" onChange={handleOnChange}/>
 
                     <input type="text" placeholder="URL" className="form-control input" name="url" onChange={handleOnChange}/>
-
+                    <p className="txt-porfa">Por favor poner el link completo!!</p>
+                    <p className="txt-ejemplo">ejemplo: https://www.instagram.com/ </p>
                     <input className="btn btn-primary" type="submit" value="Crear nuevo link" />
                 </form>
             </div>
